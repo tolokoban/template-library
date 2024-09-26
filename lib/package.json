@@ -1,0 +1,83 @@
+{
+    "name": "my-lib",
+    "version": "0.1.0",
+    "private": false,
+    "main": "dist/index.js",
+    "type": "module",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "sideEffects": [
+        "*.css"
+    ],
+    "scripts": {
+        "prepack": "npm run build",
+        "prebuild": "rm -rf dist/* && npm run doc",
+        "doc": "typedoc --out ../doc/public/api",
+        "build": "build-typescript-library .",
+        "postbuild": "npm run doc",
+        "lint": "eslint -c .eslintrc.yml 'src/**/*.ts'",
+        "start": "build-typescript-library --watch --runAfter doc .",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "prepub": "npm run build",
+        "pub": "npm publish --access public"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.25.2",
+        "@types/node": "^22.7.2",
+        "@types/react": "^18.3.9",
+        "acorn": "^8.12.1",
+        "autoprefixer": "^10.4.20",
+        "babel-loader": "^9.2.1",
+        "build-typescript-library": "^0.7.4",
+        "chalk": "^5.3.0",
+        "chokidar": "^4.0.1",
+        "css-loader": "^6.11.0",
+        "eslint": "^8.57.1",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-config-react-app": "^7.0.1",
+        "eslint-plugin-flowtype": "^8.0.3",
+        "eslint-plugin-import": "^2.30.0",
+        "eslint-plugin-jsdoc": "^50.2.5",
+        "eslint-plugin-jsx-a11y": "^6.10.0",
+        "eslint-plugin-no-null": "^1.0.2",
+        "eslint-plugin-prefer-arrow": "^1.2.3",
+        "eslint-plugin-react": "^7.36.1",
+        "eslint-plugin-react-hooks": "^4.6.2",
+        "eslint-plugin-unicorn": "^55.0.0",
+        "style-loader": "^3.3.4",
+        "ts-loader": "^9.5.1",
+        "ts-patch": "^3.2.1",
+        "typedoc": "^0.26.7",
+        "typescript": "^5.6.2",
+        "typescript-plugin-css-modules": "^5.1.0",
+        "webpack": "^5.95.0",
+        "webpack-cli": "^5.1.4"
+    },
+    "dependencies": {
+        "json5": "^2.2.3",
+        "tslib": "^2.7.0"
+    },
+    "peerDependencies": {
+        "react": "^18.3.1"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "description": "React components with theme",
+    "homepage": "https://tolokoban.github.io/my-lib"
+}

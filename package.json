@@ -1,0 +1,44 @@
+{
+    "name": "my-lib",
+    "version": "0.1.0",
+    "description": "React components with theme",
+    "homepage": "https://tolokoban.github.io/my-lib",
+    "main": "./lib/dist/index.js",
+    "types": "./lib/dist/index.d.ts",
+    "private": false,
+    "files": [
+        "./lib/dist"
+    ],
+    "scripts": {
+        "postci": "npm run doc",
+        "ci": "cd lib && npm install && npm run build",
+        "doc": "cd lib && npm run doc",
+        "test": "cd lib && npm test",
+        "copy": "node scripts/copy-pkg-info.mjs . ./lib ./doc",
+        "predeploy": "npm run copy && npm run doc",
+        "deploy": "npm run ci && npm publish --access=public",
+        "postminor": "npm run copy",
+        "minor": "npm version minor -no-git-tag-version --force",
+        "postpatch": "npm run copy",
+        "patch": "npm version patch -no-git-tag-version --force"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tolokoban/<My Library>.git"
+    },
+    "keywords": [
+        "Tolokoban"
+    ],
+    "author": "Tolokoban",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/tolokoban/tgd2/issues"
+    },
+    "dependencies": {
+        "json5": "^2.2.3",
+        "tslib": "^2.7.0"
+    },
+    "peerDependencies": {
+        "react": "^18.3.1"
+    }
+}
